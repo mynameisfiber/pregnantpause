@@ -56,7 +56,7 @@ if __name__ == "__main__":
     silence_frames = int(fs * silence_seconds)
 
     print "Analyzing"
-    move_std = bn.move_std(data, window=window_frames/2)
+    move_std = bn.move_std(data, window=window_frames)
     mean_std = bn.nanmean(move_std)
 
     widgets = ["Creating file", Bar(), ETA()]
