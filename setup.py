@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='pregnantpause',
@@ -7,7 +7,16 @@ setup(
     author='Micha Gorelick',
     author_email='mynameisfiber@gmail.com',
     url='http://github.com/mynameisfiber/pregnantpause/',
-    scripts=['pregnantpause.py',],
+    license="GPLv2",
 
-    requires=['scikits.audiolab', 'numpy', 'bottleneck', 'progressbar', ],
+    classifiers = [
+        "Topic :: Multimedia :: Sound/Audio :: Analysis",
+        "Topic :: Multimedia :: Sound/Audio :: Speech",
+        "Topic :: Communications",
+        "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
+    ],
+
+    scripts=['pregnantpause.py',],
+    install_requires=['scikits.audiolab', 'numpy', 'bottleneck', 'progressbar', ],
+
 )
