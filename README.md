@@ -13,17 +13,17 @@ We analyse the windowed standard deviation of the waveforms and identify regions
 Installation is quite simple!  Either clone the repo and install using python:
 
 ```
-git clone https://github.com/mynameisfiber/pregnantpause.git
-cd pregnantpause
-sudo python setup.py install
-pregnantpause.py --help
+$ git clone https://github.com/mynameisfiber/pregnantpause.git
+$ cd pregnantpause
+$ sudo python setup.py install
+$ pregnantpause.py --help
 ```
 
 Or by using pip:
 
 ```
-sudo pip install https://github.com/mynameisfiber/pregnantpause/tarball/master
-pregnantpause.py --help
+$ [sudo] pip install pregnantpause
+$ pregnantpause.py --help
 ```
 
 ## Usage
