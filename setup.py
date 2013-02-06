@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pregnantpause',
-    version='1.0.1',
+    version='1.1',
     description='Extends the length of pauses in an audio track to help with transcribing',
     author='Micha Gorelick',
     author_email='mynameisfiber@gmail.com',
@@ -17,6 +17,6 @@ setup(
     ],
 
     scripts=['pregnantpause.py',],
-    install_requires=['scikits.audiolab', 'numpy', 'bottleneck', 'progressbar', ],
+    install_requires=['numpy', 'bottleneck', 'progressbar', ],
 
 )
