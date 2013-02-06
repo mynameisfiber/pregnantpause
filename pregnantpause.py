@@ -13,11 +13,35 @@ ps: plantaine
 import wave
 import struct
 import numpy as np
-import bottleneck as bn
 
 import sys
 from progressbar import ProgressBar, ETA, Bar
 import argparse
+
+try:
+    assert False
+    from bottleneck import move_std, nanmean
+except:# ImportError:
+    print "Could not find package 'bottleneck', using the slow " \
+        "analysis methods"
+    print "Install bottleneck with 'pip install bottleneck' to "\
+        "drastically increase analysis speed"
+
+    def rolling_window(a, window):
+        nan = [np.nan,]
+        for i in range(window):
+            yield nan
+        for i in range(window, len(a)):
+            yield a[i-window:i]
+
+    def move_std(data, window):
+        iterator = (np.std(win) for win in rolling_window(data, window))
+        return np.fromiter(iterator, dtype=np.float)
+
+    def nanmean(data):
+        mdat = np.ma.masked_array(data,np.isnan(data))
+        return np.mean(mdat)
+
 
 def wavWrite(fname, data, params):
     outfilefd = wave.open(fname, "w")
@@ -77,8 +101,11 @@ if __name__ == "__main__":
     silence_frames = int(fs * silence_seconds)
 
     print "Analyzing"
-    move_std = bn.move_std(data, window=window_frames/2)
-    mean_std = bn.nanmean(move_std)
+    move_std = move_std(data, window=window_frames/2)
+    mean_std = nanmean(move_std)
+
+    print "move_std shape: ", move_std.shape
+    print "len(data): ", len(data)
 
     widgets = ["Creating file", Bar(), ETA()]
     pbar = ProgressBar(widgets=widgets, maxval=len(data)).start()
