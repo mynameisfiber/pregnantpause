@@ -19,7 +19,6 @@ from progressbar import ProgressBar, ETA, Bar
 import argparse
 
 try:
-    assert False
     from bottleneck import move_std, nanmean
 except:# ImportError:
     print "Could not find package 'bottleneck', using the slow " \
